@@ -1,14 +1,15 @@
 import crypto from "crypto";
 
-const generateRsetToken = () => {
-    const rawToken = crypto.randomBytes(32).toString("hex");
-    const hasedToken = crypto
+const generateResetToken = () => {
+    const rawToken = crypto.randomBytes(32).toString("hex")
+    const hashedToken = crypto
     .createHash("sha256")
     .update(rawToken)
-    .digest("hex");
+    .digest("hex")
 
-    return { rowToken, hasedToken}
-
+    return {rawToken, hashedToken}
 }
 
-export { generateRsetToken}
+export {
+    generateResetToken
+}

@@ -1,14 +1,13 @@
 import ApiError from "../utils/apiError.js";
 
 const validate = (Dtoclass) => {
-
     return (req, res, next) => {
-        const {erors, value} = Dtoclass.validate(req.body)
+        const {errors, value} = Dtoclass.validate(req.body);
         if(errors){
-            throw ApiError.badRequest(errors.json("; "))
+            throw ApiError.badRequest(errors, errors.join("; "))
         }
         req.body = value
-        next()
+        next();
     }
 }
 

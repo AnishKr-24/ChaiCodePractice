@@ -1,22 +1,18 @@
 import Joi from "joi";
 
 class BaseDto {
-
-    static schema = Joi.object({})
-
-    static validate(data) { 
-        const {error, value} = this.schema.validate(data, {
+    static validate(data){
+        const {error, value } = this.schema.validate(Date, {
             abortEarly: false,
             stripUnknown: true
-
         })
 
         if(error){
-            const errors = error.details.map(details.map((d) => d.message))
-            return {error, values: null}
+            const errors =  error.details.map((d) => d.message)
+            return {errors, value: null}
         }
+        return {errors: null, value}
     }
-
 }
 
 export default BaseDto
